@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhatsApp Enhancer</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+  <div class="mb-4">
+    <h1 class="text-xl font-bold">Filters</h1>
+    <button id="allChats" class="bg-blue-500 text-white p-2 rounded">All</button>
+    <button id="unreadChats" class="bg-blue-500 text-white p-2 rounded">Unread</button>
+    <button id="awaitingReply" class="bg-blue-500 text-white p-2 rounded">Awaiting Reply</button>
+    <button id="needsReply" class="bg-blue-500 text-white p-2 rounded">Needs Reply</button>
+  </div>
+  <div class="mb-4">
+    <h1 class="text-xl font-bold">Custom Filters</h1>
+    <button id="leadChats" class="bg-green-500 text-white p-2 rounded">Lead</button>
+    <button id="friendChats" class="bg-green-500 text-white p-2 rounded">Friends</button>
+    <button id="businessChats" class="bg-green-500 text-white p-2 rounded">Business</button>
+  </div>
+  <script>
+    function fetchJSONData() {
+        fetch("./manifest.json")
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error
+                        (`HTTP error! Status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then((data) => 
+                  console.log(data))
+            .catch((error) => 
+                   console.error("Unable to fetch data:", error));
+    }
+    fetchJSONData();
+  </script>
+  <script src="popup.js"></script>
+
+</body>
+
+
+
+</html>
